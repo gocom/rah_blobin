@@ -1,0 +1,3 @@
+h1. rah_blobin
+
+p. Loads "Textpattern":http://textpattern.com plugins from project directories to the database.
