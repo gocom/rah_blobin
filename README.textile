@@ -1,3 +1,7 @@
 h1. rah_blobin
 
 p. Loads "Textpattern":http://textpattern.com plugins from project directories to the database.
+
+h2. Requirements
+
+* Textpattern 4.6.0-dev.
