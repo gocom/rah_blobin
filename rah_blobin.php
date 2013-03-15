@@ -57,10 +57,54 @@ class rah_blobin
 
 	public function __construct()
 	{
-		if (defined('rah_blobin_plugins_dir'))
+		add_privs('prefs.rah_blobin', '1');
+		register_callback(array($this, 'install'), 'plugin_lifecycle.rah_blobin', 'installed');
+		register_callback(array($this, 'uninstall'), 'plugin_lifecycle.rah_blobin', 'deleted');
+
+		if (!defined('rah_blobin_plugins_dir'))
+		{
+			$this->dir = txpath;
+			define('rah_blobin_plugins_dir', $this->path(get_pref('rah_blobin_path')));
+		}
+
+		if (rah_blobin_plugins_dir)
 		{
 			register_callback(array($this, 'import'), 'prefs');
 		}
+	}
+
+	/**
+	 * Installer.
+	 */
+
+	public function install()
+	{
+		$position = 250;
+
+		foreach (
+			array(
+				'path' => array('text_input', '../rah_blobin'),
+			) as $name => $val
+		)
+		{
+			$n =  'rah_blobin_'.$name;
+
+			if (get_pref($n, false) === false)
+			{
+				set_pref($n, $val[1], 'rah_blobin', PREF_PLUGIN, $val[0], $position);
+			}
+
+			$position++;
+		}
+	}
+
+	/**
+	 * Uninstaller.
+	 */
+
+	public function uninstall()
+	{
+		safe_delete('txp_prefs', "name like 'rah\_blobin\_%'");
 	}
 
 	/**
