@@ -70,6 +70,7 @@ class rah_blobin
 		if (rah_blobin_plugins_dir)
 		{
 			register_callback(array($this, 'import'), 'prefs');
+			register_callback(array($this, 'endpoint'), 'textpattern');
 		}
 	}
 
@@ -84,6 +85,7 @@ class rah_blobin
 		foreach (
 			array(
 				'path' => array('text_input', '../rah_blobin'),
+				'key'  => array('text_input', md5(uniqid(mt_rand(), true))),
 			) as $name => $val
 		)
 		{
@@ -105,6 +107,25 @@ class rah_blobin
 	public function uninstall()
 	{
 		safe_delete('txp_prefs', "name like 'rah\_blobin\_%'");
+	}
+
+	/**
+	 * Public callback hook endpoint.
+	 *
+	 * Can be used to manually invoke plugin import progress.
+	 */
+
+	public function endpoint()
+	{
+		extract(gpsa(array(
+			'rah_blobin_key',
+		)));
+
+		if (get_pref('rah_blobin_key') && get_pref('rah_blobin_key') === $rah_blobin_key)
+		{
+			$this->import();
+			die;
+		}
 	}
 
 	/**
