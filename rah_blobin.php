@@ -118,10 +118,10 @@ class rah_blobin
 	public function endpoint()
 	{
 		extract(gpsa(array(
-			'rah_blobin_key',
+			'rah_blobin',
 		)));
 
-		if (get_pref('rah_blobin_key') && get_pref('rah_blobin_key') === $rah_blobin_key)
+		if (get_pref('rah_blobin_key') && get_pref('rah_blobin_key') === $rah_blobin)
 		{
 			$this->import();
 			die;
