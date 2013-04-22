@@ -1,0 +1,26 @@
+{
+    "name": "rah/blobin",
+    "description": "Textpattern plugin cache extender",
+    "keywords": ["textpattern"],
+    "homepage": "https://github.com/gocom/rah_blobin",
+    "license": "GPL-2.0",
+    {
+        "authors": [
+            {
+                "name": "Jukka Svahn",
+                "homepage": "http://rahforum.biz",
+                "role": "Developer"
+            }
+        ]
+    },
+    "support": {
+        "issues": "https://github.com/gocom/rah_blobin/issues",
+        "source": "https://github.com/gocom/rah_blobin"
+    },
+    "autoload": {
+        "files": ["rah_blobin.php"]
+    },
+    "require": {
+        "php": ">=5.2.0"
+    }
+}
