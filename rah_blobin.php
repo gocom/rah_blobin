@@ -164,15 +164,19 @@ class rah_blobin
 	public function import()
 	{
 		$this->uninstall = $this->plugins = $this->existing();
-		$files = glob(rah_blobin_plugins_dir . '/*/manifest.json', GLOB_NOSORT);
 
-		if (!$files)
-		{
-			return;
-		}
+		$iterator = new RecursiveDirectoryIterator(rah_blobin_plugins_dir);
+		$iterator = new RecursiveIteratorIterator($iterator);
 
-		foreach ($files as $file)
+		foreach ($iterator as $file)
 		{
+			$file = (string) $file;
+
+			if (basename($file) !== 'manifest.json')
+			{
+				continue;
+			}
+
 			$this->dir = dirname($file);
 			$this->manifest = json_decode(file_get_contents($file));
 			$code = $this->template();
