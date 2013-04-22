@@ -19,6 +19,6 @@
         "files": ["rah_blobin.php"]
     },
     "require": {
-        "php": ">=5.2.0"
+        "php": ">=5.2.2"
     }
 }
