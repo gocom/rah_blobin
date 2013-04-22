@@ -65,6 +65,13 @@ class rah_blobin
 
 		if (rah_blobin_plugins_dir)
 		{
+			$autoloader = rah_blobin_plugins_dir . '/autoload.php';
+
+			if (file_exists($autoloader) && is_readable($autoloader) && is_file($autoloader))
+			{
+				include_once $autoloader;
+			}
+
 			register_callback(array($this, 'import'), 'prefs');
 			register_callback(array($this, 'endpoint'), 'textpattern');
 		}
