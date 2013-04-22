@@ -16,7 +16,7 @@
         "source": "https://github.com/gocom/rah_blobin"
     },
     "autoload": {
-        "files": ["rah_blobin.php"]
+        "files": []
     },
     "require": {
         "php": ">=5.2.2"
