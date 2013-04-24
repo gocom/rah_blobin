@@ -1,0 +1,5 @@
+#@admin
+#@language fi-fi
+rah_blobin => Laajennettu liitännäissäilö
+rah_blobin_key => Julkisen soittopyyntö-osoitteen käyttämä tietoturva-avain
+rah_blobin_path => Absoluuttinen tiedostopolku projekti-hakemistoon
