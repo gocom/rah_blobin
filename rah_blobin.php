@@ -57,21 +57,28 @@ class rah_blobin
 		register_callback(array($this, 'install'), 'plugin_lifecycle.rah_blobin', 'installed');
 		register_callback(array($this, 'uninstall'), 'plugin_lifecycle.rah_blobin', 'deleted');
 
+		$this->dir = txpath;
+
 		if (!defined('rah_blobin_plugins_dir'))
 		{
-			$this->dir = txpath;
 			define('rah_blobin_plugins_dir', $this->path(get_pref('rah_blobin_path')));
+		}
+
+		if (get_pref('rah_blobin_include'))
+		{
+			foreach (do_list(get_pref('rah_blobin_include')) as $file)
+			{
+				$file = $this->path($file);
+
+				if (file_exists($file) && is_readable($file) && is_file($file))
+				{
+					include_once $file;
+				}
+			}
 		}
 
 		if (rah_blobin_plugins_dir)
 		{
-			$autoloader = rah_blobin_plugins_dir . '/autoload.php';
-
-			if (file_exists($autoloader) && is_readable($autoloader) && is_file($autoloader))
-			{
-				include_once $autoloader;
-			}
-
 			register_callback(array($this, 'import'), 'prefs');
 			register_callback(array($this, 'endpoint'), 'textpattern');
 		}
@@ -87,8 +94,9 @@ class rah_blobin
 
 		foreach (
 			array(
-				'path' => array('text_input', '../rah_blobin'),
-				'key'  => array('text_input', md5(uniqid(mt_rand(), true))),
+				'path'    => array('text_input', '../rah_blobin'),
+				'include' => array('text_input', '../rah_blobin/autoload.php'), 
+				'key'     => array('text_input', md5(uniqid(mt_rand(), true))),
 			) as $name => $val
 		)
 		{
