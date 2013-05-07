@@ -1,7 +1,7 @@
 {
     "name": "rah/rah_blobin",
     "description": "Textpattern plugin cache extender",
-    "keywords": ["textpattern"],
+    "keywords": ["textpattern", "plugin"],
     "homepage": "https://github.com/gocom/rah_blobin",
     "license": "GPL-2.0",
     "authors": [
@@ -15,10 +15,9 @@
         "issues": "https://github.com/gocom/rah_blobin/issues",
         "source": "https://github.com/gocom/rah_blobin"
     },
-    "autoload": {
-        "files": []
-    },
     "require": {
-        "php": ">=5.2.2"
+        "php": ">=5.2.2",
+		"textpattern/lock": ">=4.6.0,4.6.*@dev",
+		"textpattern/installer": "*"
     }
 }
