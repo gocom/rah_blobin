@@ -1,5 +1,7 @@
 h1. rah_blobin
 
+p. "Packagist":https://packagist.org/packages/rah/rah_blobin | "Twitter":http://twitter.com/gocom | "Donate":http://rahforum.biz/donate/rah_blobin
+
 p. Loads "Textpattern":http://textpattern.com plugins from project and "Composer's":http://getcomposer.org/ vendor directories. Unlike the default plugin cache feature, rah_blobin supports all the features expected from a plugin that was normally installed from a compiled package; Plugin-lifecycle callbacks, installers, uninstallers, updaters, activators, option panels, load order configuration, translation files, load types, and require and include statements.
 
 p. Rah_blobin works by creating stub loader plugins for each plugin in the project or the PSR-0 compliant vendor directory. These loaders then reference the source files, loading the assets from static source files as a normal plugin. What Textpattern sees is just a normal plugin, a plugin that is fully supported and can use any of the features plugins have in their arsenal. These plugins can also be managed and disabled from the native Plugins panel.
