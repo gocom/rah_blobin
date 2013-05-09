@@ -80,7 +80,6 @@ class rah_blobin
 
 		if (rah_blobin_plugins_dir)
 		{
-			register_callback(array($this, 'import'), 'prefs');
 			register_callback(array($this, 'endpoint'), 'textpattern');
 			$this->sync();
 		}
