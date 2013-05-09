@@ -65,19 +65,6 @@ class rah_blobin
 			define('rah_blobin_plugins_dir', $this->path(get_pref('rah_blobin_path')));
 		}
 
-		if (get_pref('rah_blobin_include'))
-		{
-			foreach (do_list(get_pref('rah_blobin_include')) as $file)
-			{
-				$file = $this->path($file);
-
-				if (file_exists($file) && is_readable($file) && is_file($file))
-				{
-					include_once $file;
-				}
-			}
-		}
-
 		if (rah_blobin_plugins_dir)
 		{
 			register_callback(array($this, 'endpoint'), 'textpattern');
@@ -96,7 +83,6 @@ class rah_blobin
 		foreach (
 			array(
 				'path'    => array('text_input', '../rah_blobin'),
-				'include' => array('text_input', '../rah_blobin/autoload.php'), 
 				'key'     => array('text_input', md5(uniqid(mt_rand(), true))),
 				'sync'    => array('rah_blobin_sync', 0),
 			) as $name => $val

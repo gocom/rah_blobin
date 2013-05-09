@@ -1,5 +1,4 @@
 #@admin
 rah_blobin => Plugin cache extender
 rah_blobin_key => Public callback key
-rah_blobin_include => Included PHP files and autoloaders
 rah_blobin_path => Path to the projects directory
