@@ -222,11 +222,6 @@ class rah_blobin
 					continue;
 				}
 
-				if ((string) $this->manifest->version === (string) $this->plugins[$this->manifest->name])
-				{
-					continue;
-				}
-
 				$rs = safe_update(
 					'txp_plugin',
 					"author = '".doSlash($this->manifest->author)."',
