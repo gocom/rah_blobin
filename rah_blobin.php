@@ -4,7 +4,6 @@
  * Rah_blobin plugin for Textpattern CMS.
  *
  * @author  Jukka Svahn
- * @date    2013-
  * @license GNU GPLv2
  * @link    https://github.com/gocom/rah_blobin
  *
