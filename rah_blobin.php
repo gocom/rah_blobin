@@ -53,6 +53,7 @@ class rah_blobin
 
 	public function __construct()
 	{
+		add_privs('rah_blobin_sync', '1');
 		add_privs('prefs.rah_blobin', '1');
 		register_callback(array($this, 'install'), 'plugin_lifecycle.rah_blobin', 'installed');
 		register_callback(array($this, 'uninstall'), 'plugin_lifecycle.rah_blobin', 'deleted');
@@ -81,6 +82,7 @@ class rah_blobin
 		{
 			register_callback(array($this, 'import'), 'prefs');
 			register_callback(array($this, 'endpoint'), 'textpattern');
+			$this->sync();
 		}
 	}
 
@@ -97,6 +99,7 @@ class rah_blobin
 				'path'    => array('text_input', '../rah_blobin'),
 				'include' => array('text_input', '../rah_blobin/autoload.php'), 
 				'key'     => array('text_input', md5(uniqid(mt_rand(), true))),
+				'sync'    => array('rah_blobin_sync', 0),
 			) as $name => $val
 		)
 		{
@@ -136,6 +139,18 @@ class rah_blobin
 		{
 			$this->import();
 			die;
+		}
+	}
+
+	/**
+	 * Private callback hook endpoint.
+	 */
+
+	public function sync()
+	{
+		if (txpinterface === 'admin' && gps('rah_blobin_sync') && has_privs('rah_blobin_sync') && bouncer('sync', array('sync' => true)))
+		{
+			$this->import();
 		}
 	}
 
@@ -427,6 +442,35 @@ class rah_blobin
 		}
 
 		return $path;
+	}
+}
+
+/**
+ * Option to sync.
+ *
+ * @return bool
+ */
+
+function rah_blobin_sync()
+{
+	global $event, $step;
+
+	if (has_privs('rah_blobin_sync'))
+	{
+		return href(gTxt('rah_blobin_sync_now'), array(
+			'event'           => $event,
+			'step'            => $step,
+			'rah_blobin_sync' => 1,
+			'_txp_token'      => form_token(),
+		), array(
+			'class' => 'navlink',
+		));
+	}
+	else
+	{
+		return span(gTxt('rah_blobin_sync_now'), array(
+			'class' => 'navlink-disabled',
+		));
 	}
 }
 
