@@ -179,7 +179,7 @@ class Rah_Blobin
     {
         $this->uninstall = $this->plugins = $this->existing();
 
-        $iterator = new RecursiveDirectoryIterator(rah_blobin_plugins_dir);
+        $iterator = new RecursiveDirectoryIterator(rah_blobin_plugins_dir, RecursiveDirectoryIterator::FOLLOW_SYMLINKS);
         $iterator = new RecursiveIteratorIterator($iterator);
 
         foreach ($iterator as $file)
