@@ -17,7 +17,7 @@
     },
     "require": {
         "php": ">=5.2.2",
-		"textpattern/lock": ">=4.6.0,4.6.*@dev",
-		"textpattern/installer": "*"
+        "textpattern/lock": ">=4.6.0,4.6.*@dev",
+        "textpattern/installer": "*"
     }
 }

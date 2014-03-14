@@ -1,11 +1,11 @@
 {
-	"name"        : "rah_blobin",
-	"description" : "Loads plugins from project directories",
-	"version"     : "0.1.0",
-	"type"        : 5,
-	"author"      : "Jukka Svahn",
-	"author_uri"  : "http://rahforum.biz",
-	"order"       : 1,
-	"flags"       : 3,
-	"help"        : {"file" : ["./README.textile"]}
+    "name": "rah_blobin",
+    "description": "Loads plugins from project directories",
+    "version": "0.1.0",
+    "type": 5,
+    "author": "Jukka Svahn",
+    "author_uri": "http://rahforum.biz",
+    "order": 1,
+    "flags": 3,
+    "help": {"file" : ["./README.textile"]}
 }
