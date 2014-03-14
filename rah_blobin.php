@@ -289,7 +289,7 @@ class Rah_Blobin
 
         foreach ($this->uninstall as $name => $version)
         {
-            if ($version !== false)
+            if ($version !== false && $name !== 'rah_blobin')
             {
                 safe_delete('txp_plugin', "name = '".doSlash($name)."'");
                 safe_delete('txp_lang', "owner = '".doSlash($name)."'");
