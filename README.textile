@@ -1,43 +1,41 @@
 h1. rah_blobin
 
-p. "Packagist":https://packagist.org/packages/rah/rah_blobin | "Twitter":http://twitter.com/gocom | "Donate":http://rahforum.biz/donate/rah_blobin
+"Packagist":https://packagist.org/packages/rah/rah_blobin
 
-p. Loads "Textpattern":http://textpattern.com plugins from project and "Composer's":http://getcomposer.org/ vendor directories. Unlike the default plugin cache feature, rah_blobin supports all the features expected from a plugin that was normally installed from a compiled package; Plugin-lifecycle callbacks, installers, uninstallers, updaters, activators, option panels, load order configuration, translation files, load types, and require and include statements.
+*This has been deprecated and replaced by "textpattern/installer":https://github.com/gocom/textpattern-installer/.* While this did never have any stable releases, the source repository is kept around to avoid breaking projects that could be using this.
 
-p. Rah_blobin works by creating stub loader plugins for each plugin in the project or the PSR-0 compliant vendor directory. These loaders then reference the source files, loading the assets from static source files as a normal plugin. What Textpattern sees is just a normal plugin, a plugin that is fully supported and can use any of the features plugins have in their arsenal. These plugins can also be managed and disabled from the native Plugins panel.
+Loads "Textpattern":http://textpattern.com plugins from project and "Composer's":http://getcomposer.org/ vendor directories. Unlike the default plugin cache feature, rah_blobin supports all the features expected from a plugin that was normally installed from a compiled package; Plugin-lifecycle callbacks, installers, uninstallers, updaters, activators, option panels, load order configuration, translation files, load types, and require and include statements.
+
+Rah_blobin works by creating stub loader plugins for each plugin in the project or the PSR-0 compliant vendor directory. These loaders then reference the source files, loading the assets from static source files as a normal plugin. What Textpattern sees is just a normal plugin, a plugin that is fully supported and can use any of the features plugins have in their arsenal. These plugins can also be managed and disabled from the native Plugins panel.
 
 h2. Installing
 
-p. Using "Composer":http://getcomposer.org:
+Using "Composer":http://getcomposer.org:
 
 bc. $ composer.phar require rah/rah_blobin
 
 h2. Possibilities
 
-p. Rah_blobin allows you to enjoy both the advantages of plugin cache directory and the power, easiness and compatibility of normally installed plugin package. It allows you to directly edit and modify source files, put the plugins under a version control system, like git or SVN, or handle installation through package and dependency managers, like "Composer":http://getcomposer.org/.
+Rah_blobin allows you to enjoy both the advantages of plugin cache directory and the power, easiness and compatibility of normally installed plugin package. It allows you to directly edit and modify source files, put the plugins under a version control system, like git or SVN, or handle installation through package and dependency managers, like "Composer":http://getcomposer.org/.
 
 h2. Basics
 
-p. Rah_blobin uses and supports the "manifest.json":https://github.com/gocom/abc_plugin plugin source structure. The manifest.json is a structure used and compiled by "MassPlugCompiler":https://github.com/gocom/MassPlugCompiler. The essential part of how rah_blobin works is the manifest file, manifest.json. This meta file describes what the plugin is and how it's structured, the stub loader is then build upon that, reflecting all the attributes defined in the manifest files.
+Rah_blobin uses and supports the "manifest.json":https://github.com/gocom/abc_plugin plugin source structure. The manifest.json is a structure used and compiled by "MassPlugCompiler":https://github.com/gocom/MassPlugCompiler. The essential part of how rah_blobin works is the manifest file, manifest.json. This meta file describes what the plugin is and how it's structured, the stub loader is then build upon that, reflecting all the attributes defined in the manifest files.
 
 h2. Internals
 
 h3. Finding plugins from the project directory
 
-p. Rah_blobin picks up plugins from the project directory recursively. This means it supports nested and deep file structures, which also allows it to support Composer's vendor directory and PSR-0 structures. It finds plugins by searching for manifest.json files. Any directory where it finds one is considered as a plugin.
+Rah_blobin picks up plugins from the project directory recursively. This means it supports nested and deep file structures, which also allows it to support Composer's vendor directory and PSR-0 structures. It finds plugins by searching for manifest.json files. Any directory where it finds one is considered as a plugin.
 
 h3. Processing files and creating a loader
 
-p. After it has found the manifest.json files, it processes and parses the contents. It constructs the plugin using the manifest file and collects the source and translation file references it needs. It then writes a loader plugin to the database based on that information. Each plugin will get its own loader, containing all the meta information the plugin would contain after it was installed normally from a package. The difference compared to a normal plugin, is that instead of it copying source code to the database, it references the source files. This means that you can edit the source files themselves and changes will reflect instantly.
+After it has found the manifest.json files, it processes and parses the contents. It constructs the plugin using the manifest file and collects the source and translation file references it needs. It then writes a loader plugin to the database based on that information. Each plugin will get its own loader, containing all the meta information the plugin would contain after it was installed normally from a package. The difference compared to a normal plugin, is that instead of it copying source code to the database, it references the source files. This means that you can edit the source files themselves and changes will reflect instantly.
 
 h3. Plugin-lifecycle, updaters and installers
 
-p. Updaters and installers are run when the version number in the manifest.json file is changed. This may change in the future to every import run task.
+Updaters and installers are run when the version number in the manifest.json file is changed. This may change in the future to every import run task.
 
 h3. Disabling and uninstalling plugins
 
-p. Plugins can be disabled from Textpattern's own Plugins panel. Uninstalling can be done by adding @uninstall@ property to the manifest file, or by uninstalling the plugin normally from the Plugins panel and then deleting its source directory from your projects directory.
-
-h2. Requirements
-
-* Textpattern 4.6.0-dev.
+Plugins can be disabled from Textpattern's own Plugins panel. Uninstalling can be done by adding @uninstall@ property to the manifest file, or by uninstalling the plugin normally from the Plugins panel and then deleting its source directory from your projects directory.

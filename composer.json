@@ -8,7 +8,7 @@
     "authors": [
         {
             "name": "Jukka Svahn",
-            "homepage": "http://rahforum.biz",
+            "homepage": "https://github.com/gocom",
             "role": "Developer"
         }
     ],
@@ -20,5 +20,6 @@
         "php": ">=5.2.2",
         "textpattern/lock": ">=4.5.0,<4.7.0",
         "textpattern/installer": "*"
-    }
+    },
+    "abandoned": "textpattern/installer"
 }
